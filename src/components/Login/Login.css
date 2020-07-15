@@ -1,0 +1,127 @@
+.login-background {
+  background-color: #e0e0e0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container {
+  background-color: #fff8f8;
+  display: flex;
+  box-shadow: 0 1rem 2rem #000;
+}
+.login-image {
+  height: 37rem;
+  width: 25rem;
+  margin-right: 2rem;
+}
+.logo {
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-img {
+  height: 5rem;
+}
+.logo-text {
+  font-weight: bold;
+  color: #c52929;
+}
+.login-form {
+  padding: 1rem 3rem;
+  width: 35rem;
+}
+
+.login-form-forgot {
+  margin-top: -1.5rem;
+  float: left;
+  color: #ee8208;
+  width: 55%;
+}
+
+.form--signup:link,
+.form--signup:visited {
+  font-weight: bolder;
+  color: #c52929;
+}
+.form-username {
+  border: none;
+  background-color: transparent;
+  width: 70%;
+  border-bottom: 1px solid #c0c0c0;
+}
+.form-username:focus,
+.form-username:active {
+  border: none;
+  outline: none;
+  box-shadow: 0 1.5rem 4rem rgba(#000, 0.15);
+}
+
+.login-form-button {
+  width: 70%;
+  font-weight: 500;
+  letter-spacing: 1px;
+  height: 2.5rem;
+  background-color: #e01017;
+  margin: auto;
+  display: block;
+  border-radius: 5px;
+  border: none;
+}
+.login-form-button:hover {
+  background-color: #f50101;
+}
+.login-form-button:active,
+.login-form-button:visited {
+  outline: none;
+  transform: translateY(3px);
+}
+.register {
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+  display: block;
+  position: relative;
+}
+.register-or {
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: block;
+  position: relative;
+}
+.register-or:before {
+  content: "";
+  width: 25%;
+  border-bottom: solid 1px #c0c0c0;
+  position: absolute;
+  left: 22%;
+  top: 55%;
+  z-index: 1;
+}
+.register-or:after {
+  content: "";
+  width: 25%;
+  border-bottom: solid 1px #c0c0c0;
+  position: absolute;
+  left: 53%;
+  top: 55%;
+  z-index: 1;
+}
+
+.icons-list {
+  width: 40%;
+  margin: auto;
+}
+.icons-list-logo {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.open-profile {
+  margin-top: 4rem;
+  color: #118124;
+  font-size: 1rem;
+  font-weight: bolder;
+}

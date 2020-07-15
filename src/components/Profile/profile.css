@@ -1,0 +1,45 @@
+.logo-heading {
+  font-size: 1.4rem;
+  text-align: left;
+  line-height: 1;
+  font-weight: 700;
+  color: #404040;
+  margin-left: 1rem;
+}
+
+.menu-item {
+  border-bottom: 1px solid #eee;
+}
+.menu-item:active {
+  background-color: transparent;
+  color: red;
+}
+.menu-item:hover {
+  background-color: transparent;
+  color: red;
+}
+img {
+  height: 75vh;
+}
+.logout-button {
+  font-weight: bolder;
+  position: absolute;
+  top: 19rem;
+  left: 1.5rem;
+}
+.side-bar {
+  background-color: #fff;
+}
+.header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+.content {
+  padding: 0.5rem;
+}
