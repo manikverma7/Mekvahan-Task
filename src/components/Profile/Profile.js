@@ -5,11 +5,13 @@ import "./profile.css";
 import { Redirect } from "@reach/router";
 import { Layout, Menu, Avatar, Button } from "antd";
 
+
 import Popup from "../Popup/Popup";
 import Address from "../Address/Address";
 
 function Profile(props) {
   const [isLoggedOut, setIsLoggedOut] = useState(false);
+
 
   const [addresses, setAddresses] = useState([]);
 

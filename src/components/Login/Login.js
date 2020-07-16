@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Loader from "../Loader/Loader";
 import cookie from "react-cookies";
 import "antd/dist/antd.css";
 import "./Login.css";
@@ -6,13 +7,17 @@ import { Link, Redirect } from "@reach/router";
 import { Typography } from "antd";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import toastr from "reactjs-toastr";
+import "reactjs-toastr/lib/toast.css";
 
 const Login = (props) => {
   const [mobile, updateMobile] = useState("");
   const [password, updatePassword] = useState("");
   const [isLoggedIn, updateIsLoggedIn] = useState(false);
+  const [loader, updateLoader] = useState(false);
 
   function login() {
+    updateLoader(true);
     fetch("https://mekvahan.com/api/android_intern_task", {
       method: "POST",
       headers: {
@@ -34,6 +39,10 @@ const Login = (props) => {
       })
       .catch((err) => {
         console.log(`Error while login ${err}`);
+        // toastr.success("Error")
+      })
+      .finally(() => {
+        updateLoader(false);
       });
   }
 
@@ -51,6 +60,7 @@ const Login = (props) => {
 
   return (
     <div className="login-background">
+      <Loader loader={loader} />
       <div className="login-container">
         <img
           src={require("../../images/car.png")}
