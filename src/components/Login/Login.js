@@ -7,8 +7,8 @@ import { Link, Redirect } from "@reach/router";
 import { Typography } from "antd";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import toastr from "reactjs-toastr";
-import "reactjs-toastr/lib/toast.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = (props) => {
   const [mobile, updateMobile] = useState("");
@@ -35,11 +35,19 @@ const Login = (props) => {
         if (res.status) {
           cookie.save("status", res.status);
           updateIsLoggedIn(true);
+        } else {
+          toast.error("Wrong Mobile Number/PassWord", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined,
+          });
         }
       })
       .catch((err) => {
         console.log(`Error while login ${err}`);
-        // toastr.success("Error")
       })
       .finally(() => {
         updateLoader(false);
@@ -60,6 +68,7 @@ const Login = (props) => {
 
   return (
     <div className="login-background">
+      <ToastContainer />
       <Loader loader={loader} />
       <div className="login-container">
         <img

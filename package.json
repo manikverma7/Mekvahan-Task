@@ -12,6 +12,7 @@
     "react-cookies": "^0.1.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.8",
     "reactjs-toastr": "^1.1.0"
   },
   "scripts": {
