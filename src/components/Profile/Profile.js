@@ -47,7 +47,7 @@ function Profile(props) {
 
   //Checks for logout state and redirects the page on its basis
   if (isLoggedOut) {
-    return <Redirect to="/" noThrow />;
+    return <Redirect to="/" noThrow />; 
   }
   const { Header, Content, Footer, Sider } = Layout;
 
@@ -91,7 +91,7 @@ function Profile(props) {
               />
             )}
 
-            {addresses.map((addressItem, index) => {
+            {addresses.map((addressItem, index) => {  {/*Maps through the address array to render the Address Component */}
               return (
                 <Address
                   key={index}
