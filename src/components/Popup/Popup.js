@@ -4,25 +4,30 @@ import { PlusOutlined } from "@ant-design/icons";
 import "./popup.css";
 
 function Popup(props) {
+  //State for setting the address on user input
   const [address, setAddress] = useState({
     place: "",
     content: "",
   });
+
+  //Function runs whenever the inputs anything in the Address Popup Box
   function handleChange(event) {
     const { name, value } = event.target;
     console.log(event.target.value);
 
-    setAddress((prevNote) => {
+    setAddress((prevAddress) => {
       return {
-        ...prevNote,
+        ...prevAddress, ///Spread operator for finding the Previous Addresses and keeping them in the array
         [name]: value,
       };
     });
   }
 
+  //Function Runs when the user click on submit button in the Address Popup
   const submitAddress = () => {
     props.onAdd(address);
     setAddress({
+      //This sets the address popup box to empty again.
       place: "",
       content: "",
     });
@@ -40,12 +45,14 @@ function Popup(props) {
   const { TextArea } = Input;
 
   const showModal = () => {
+    ///Function responsible for opening the address popup
     setState({
       visible: true,
     });
   };
 
   const handleCancel = () => {
+    ///Function responsible for closing the address popup
     setState({ visible: false });
   };
 

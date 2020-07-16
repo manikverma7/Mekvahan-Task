@@ -4,23 +4,24 @@ import "antd/dist/antd.css";
 import "./profile.css";
 import { Redirect } from "@reach/router";
 import { Layout, Menu, Avatar, Button } from "antd";
-
-
 import Popup from "../Popup/Popup";
 import Address from "../Address/Address";
 
 function Profile(props) {
+  //State for checking the logout condition
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-
+  //State for storing all the addresses in an Array.
   const [addresses, setAddresses] = useState([]);
 
+  //Function for storing all the Previous and New addresses in an Array.
   function addAddress(newAddress) {
     setAddresses((prevAddresses) => {
       return [...prevAddresses, newAddress];
     });
   }
 
+  //Function for deleting the address which the user don't want.
   function deleteAddress(id) {
     setAddresses((prevAddresses) => {
       return prevAddresses.filter((AddressItem, index) => {
@@ -29,6 +30,7 @@ function Profile(props) {
     });
   }
 
+  //It runs when the page renders or when the state changes.
   useEffect(() => {
     if (cookie.load("status")) {
       console.log("Is Logged In");
@@ -37,10 +39,13 @@ function Profile(props) {
     }
   }, []);
 
+  //Function logs out the user by removing status from cookie and setting logout state to true.
   function logout() {
     cookie.remove("status");
     setIsLoggedOut(true);
   }
+
+  //Checks for logout state and redirects the page on its basis
   if (isLoggedOut) {
     return <Redirect to="/" noThrow />;
   }

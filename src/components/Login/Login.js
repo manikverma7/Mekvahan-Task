@@ -11,11 +11,19 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = (props) => {
+  //States For Reading the Inputs by the User
   const [mobile, updateMobile] = useState("");
   const [password, updatePassword] = useState("");
+
+  //States for Redirecting the Login Page to the Users Profile
   const [isLoggedIn, updateIsLoggedIn] = useState(false);
+
+  //State For Running a loader
   const [loader, updateLoader] = useState(false);
 
+  const { Text } = Typography;
+
+  //Function called when the user clicks on the login button
   function login() {
     updateLoader(true);
     fetch("https://mekvahan.com/api/android_intern_task", {
@@ -33,10 +41,11 @@ const Login = (props) => {
       })
       .then((res) => {
         if (res.status) {
-          cookie.save("status", res.status);
+          cookie.save("status", res.status); //Stores the status(true) in the browser's cookie.
           updateIsLoggedIn(true);
         } else {
           toast.error("Wrong Mobile Number/PassWord", {
+            //Toaster runs the user enters wrong login credentials
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -50,26 +59,23 @@ const Login = (props) => {
         console.log(`Error while login ${err}`);
       })
       .finally(() => {
-        updateLoader(false);
+        updateLoader(false); //State of the loader changes to false when the post request is completed
       });
   }
 
+  //Checks for redirecting  to user profile when the login state is true
   if (isLoggedIn) {
     return <Redirect to="profile" noThrow />;
   }
+  //Checks for redirecting to user profile when status is still stored in the cookie
   if (cookie.load("status")) {
     return <Redirect to="profile" noThrow />;
   }
 
-  const { Text } = Typography;
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   return (
     <div className="login-background">
       <ToastContainer />
-      <Loader loader={loader} />
+      <Loader loader={loader} /> {/* Sending the state of loader as a prop*/}
       <div className="login-container">
         <img
           src={require("../../images/car.png")}
@@ -82,7 +88,6 @@ const Login = (props) => {
           initialValues={{
             remember: true,
           }}
-          onFinish={onFinish}
         >
           <div className="logo">
             <img
