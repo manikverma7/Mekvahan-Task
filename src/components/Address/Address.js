@@ -9,7 +9,7 @@ function Address(props) {
   return (
     <div>
       <Card title={props.place} className="card-address">
-        <p>{props.content}</p>
+        <p className="card-content">{props.content}</p>
         <Button type="primary" danger className="btn btn-red">
           Edit
         </Button>

@@ -1,7 +1,6 @@
 .card-address {
   border-radius: 7px;
   box-shadow: 0 2px 5px #ccc;
-  width: 30rem;
   margin: 1rem;
   float: left;
 }
@@ -17,4 +16,35 @@
   margin-left: 1rem;
   color: #fff;
   border: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .card-address {
+    width: 20rem;
+  }
+  .card-content {
+    height: 4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card-address {
+    width: 15rem;
+  }
+  .card-content {
+    height: 6rem;
+  }
+
+  .btn-delete {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-address {
+    width: 11rem;
+  }
+  .card-content {
+    height: 8rem;
+  }
 }

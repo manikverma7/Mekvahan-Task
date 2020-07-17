@@ -6,7 +6,6 @@
   color: #404040;
   margin-left: 1rem;
 }
-
 .menu-item {
   border-bottom: 1px solid #eee;
 }
@@ -37,9 +36,40 @@ img {
   justify-content: space-between;
 }
 
-h2 {
+.myAddress {
   margin-bottom: 0;
 }
 .content {
-  padding: 0.5rem;
+  padding: 1rem;
+}
+@media only screen and (max-width: 800px) {
+  img {
+    height: 90vh;
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    justify-content: center;
+  }
+  .myAddress {
+    display: none;
+  }
+  .popup-address {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  img {
+    height: 85vh;
+    width: 85vw;
+  }
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    padding: 0;
+  }
 }

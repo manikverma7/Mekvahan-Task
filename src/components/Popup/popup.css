@@ -1,4 +1,10 @@
 .btn-red {
-    background-color: #ff3031;
-    border: none;
+  background-color: #ff3031;
+  border: none;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .btn-addAddress {
+    font-size: 1.5rem;
   }
+}

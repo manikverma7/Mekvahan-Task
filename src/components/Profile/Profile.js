@@ -14,6 +14,9 @@ function Profile(props) {
   //State for storing all the addresses in an Array.
   const [addresses, setAddresses] = useState([]);
 
+  //State of the sidebar slider
+  const [collapsed, setCollapsed] = useState(false);
+
   //Function for storing all the Previous and New addresses in an Array.
   function addAddress(newAddress) {
     setAddresses((prevAddresses) => {
@@ -47,20 +50,30 @@ function Profile(props) {
 
   //Checks for logout state and redirects the page on its basis
   if (isLoggedOut) {
-    return <Redirect to="/" noThrow />; 
+    return <Redirect to="/" noThrow />;
   }
+
   const { Header, Content, Footer, Sider } = Layout;
 
+  const onCollapse = (collapsed) => {
+    setCollapsed(collapsed);
+  };
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider className="side-bar">
+    <Layout style={{ minHeight: "100vh" }} className="layout">
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={onCollapse}
+        className="side-bar"
+        breakpoint="lg"
+      >
         <div className="logo">
           <Avatar
             size={64}
             src={require("../../images/dp.png")}
             alt="display picture"
           />
-          <h1 className="logo-heading">Hi Mekvahan!</h1>
+          {collapsed ? null : <h1 className="logo-heading">Hi Mekvahan!</h1>}
         </div>
         <Menu theme="light" defaultSelectedKeys={["2"]} mode="inline">
           <Menu.Item key="1" className="menu-item">
@@ -72,15 +85,17 @@ function Profile(props) {
           <Menu.Item key="3" className="menu-item">
             Change Password
           </Menu.Item>
-          <Button onClick={logout} className="logout-button">
-            Log Out
-          </Button>
+          {collapsed ? null : (
+            <Button onClick={logout} className="logout-button">
+              Log Out
+            </Button>
+          )}
         </Menu>
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background header">
           <h2 className="myAddress">My Addresses</h2>
-          <Popup onAdd={addAddress} />
+          <Popup onAdd={addAddress} className="popup-address" />
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <div className="site-layout-background content">
@@ -91,7 +106,10 @@ function Profile(props) {
               />
             )}
 
-            {addresses.map((addressItem, index) => {  {/*Maps through the address array to render the Address Component */}
+            {addresses.map((addressItem, index) => {
+              {
+                /*Maps through the address array to render the Address Component */
+              }
               return (
                 <Address
                   key={index}
